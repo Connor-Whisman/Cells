@@ -32,7 +32,7 @@ int main()
 		for (int y = 0; y < cols; y += 1)
 		{
 			Cell cell(25.f, 25.f, (x * 100) + 30, (y * 100) + 30);
-			cell.shape.setFillColor(sf::Color(120, 150, 35));
+			cell.color(120, 150, 35);
 			cellVec.push_back(cell);
 		}
 	}
@@ -73,6 +73,7 @@ int main()
 			iC += 10;
 			//cell.shape.setRotation(iC);
 			window.draw(cell.shape);
+			//cell.draw(window);
 		}
 
 
