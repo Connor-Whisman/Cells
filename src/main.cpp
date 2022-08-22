@@ -4,17 +4,7 @@
 #include <vector>
 
 
-const unsigned int SCREEN_WIDTH = 1400;
-const unsigned int SCREEN_HEIGHT = 1000;
 
-const unsigned int ROWS = 12;
-const unsigned int COLS = 8;
-
-const float CELL_SIZE = 25.f;
-const float CELL_SPACE = 50.f;
-const int INIT_POS = (CELL_SPACE * 2) + CELL_SIZE;
-const int xINIT_SPACE = 55;
-const int yINIT_SPACE = 15;
 
 int main()
 {
@@ -35,9 +25,9 @@ int main()
 	// ONE DIMENSIONAL VECTOR OF CELLS
 	std::vector<Cell> cellVec;
 	// LOOP OVER SCREEN AND ADD CELLS TO VECTOR
-	for (int x = 0; x < ROWS; x += 1)
+	for (int x = 0; x < COLS; x += 1)
 	{
-		for (int y = 0; y < COLS; y += 1)
+		for (int y = 0; y < ROWS; y += 1)
 		{
 			Cell cell(CELL_SIZE, CELL_SIZE, x * INIT_POS + xINIT_SPACE, y * INIT_POS + yINIT_SPACE);
 			cell.color(120, 150, 35);

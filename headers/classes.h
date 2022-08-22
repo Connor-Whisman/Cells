@@ -4,6 +4,21 @@
 #include "..\headers\classes.h"
 
 
+// WINDOW
+const unsigned int SCREEN_WIDTH = 1400;
+const unsigned int SCREEN_HEIGHT = 1000;
+// GRID
+const unsigned int ROWS = 22;
+const unsigned int COLS = 34;
+// CELLS FOR GRID
+const float CELL_SIZE = 25.f;
+const float CELL_SPACE = 7.5f;
+const int INIT_POS = (CELL_SPACE * 2) + CELL_SIZE;
+const int xINIT_SPACE = 10;
+const int yINIT_SPACE = 10;
+
+
+
 class Cell : sf::Drawable
 {
 private:
