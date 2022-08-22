@@ -1,13 +1,18 @@
-#include "..\headers\classes.h"
+#include "..\headers\const.h"
 
 
 
-Cell::Cell(float xSize = 25.f, float ySize = 25.f, float xPos = 0.f, float yPos = 0.f)
+
+Cell::Cell(float xSize, float ySize, float xPos, float yPos)
 {
-	this->id++;
 	this->shape.setSize(sf::Vector2f(xSize, ySize));
 	this->shape.setPosition(sf::Vector2f(xPos, yPos));
-	std::cout << "Cell ID: " << this->id << "Created." << std::endl;
+}
+
+Cell::Cell()
+{
+	this->shape.setSize(sf::Vector2f(CELL_SIZE, CELL_SIZE));
+	this->shape.setPosition(sf::Vector2f(xINIT_SPACE, yINIT_SPACE));
 }
 
 Cell::~Cell()
@@ -33,6 +38,7 @@ void Cell::move(int direction)
 {
 	sf::Vector2f currentPos = this->shape.getPosition();
 	float moveDistance = INIT_POS;
+
 	switch (direction)
 	{
 	case 0: // N
