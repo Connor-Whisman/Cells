@@ -35,20 +35,20 @@ void Cell::color(int R, int G, int B)
 void Cell::move(int direction)
 {
 	sf::Vector2f currentPos = this->shape.getPosition();
-
+	float moveDistance = 125;
 	switch (direction)
 	{
 	case 0: // N
-		currentPos.y -= 1.f;
+		currentPos.y -= moveDistance;
 		break;
 	case 1: // E
-		currentPos.x += 1.f;
+		currentPos.x += moveDistance;
 		break;
 	case 2: // S
-		currentPos.y += 1.f;
+		currentPos.y += moveDistance;
 		break;
 	case 3: // W
-		currentPos.x -= 1.f;
+		currentPos.x -= moveDistance;
 		break;
 	}
 
