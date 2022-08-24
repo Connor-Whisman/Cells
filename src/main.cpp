@@ -63,16 +63,16 @@ int main()
 				{
 				// ADD CAR TO MAP
 				case sf::Keyboard::W:	// N
-					carVec.push_back(new Car(0));
+					carVec.push_back(new Car(0, 220, 30, 30));
 					break;
 				case sf::Keyboard::D:	// E
-					carVec.push_back(new Car(1));
+					carVec.push_back(new Car(1, 220, 30, 30));
 					break;
 				case sf::Keyboard::S:	// S
-					carVec.push_back(new Car(2));
+					carVec.push_back(new Car(2, 220, 30, 30));
 					break;
 				case sf::Keyboard::A:	// W
-					carVec.push_back(new Car(3));
+					carVec.push_back(new Car(3, 220, 30, 30));
 					break;
 				default:
 					break;
@@ -99,8 +99,7 @@ int main()
 		{
 			if (car->isActive)
 			{
-				car->checkEnd();
-				car->color(220, 30, 30);
+				//car->color(220, 30, 30);
 				car->move();
 				window.draw(car->shape);
 			}

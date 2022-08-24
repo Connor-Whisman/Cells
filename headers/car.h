@@ -12,9 +12,8 @@ public:
 	
 	bool isActive;
 
-	Car(int dir);
+	Car(int dir, int R, int G, int B);
 
 	void move();
 
-	void checkEnd();
 };

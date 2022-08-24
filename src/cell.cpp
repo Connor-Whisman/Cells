@@ -7,12 +7,14 @@ Cell::Cell(float xSize, float ySize, float xPos, float yPos)
 {
 	this->shape.setSize(sf::Vector2f(xSize, ySize));
 	this->shape.setPosition(sf::Vector2f(xPos, yPos));
+	this->direction = 0;
 }
 
 Cell::Cell()
 {
 	this->shape.setSize(sf::Vector2f(CELL_SIZE, CELL_SIZE));
 	this->shape.setPosition(sf::Vector2f(xINIT_SPACE, yINIT_SPACE));
+	this->direction = 0;
 }
 
 Cell::~Cell()
