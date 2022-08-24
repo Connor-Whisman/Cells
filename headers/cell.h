@@ -7,9 +7,11 @@
 class Cell : sf::Drawable
 {
 private:
+	int direction;
 
 public:
 	sf::RectangleShape shape;
+	sf::Vector2f currPos;
 
 public:
 	Cell(float xSize, float ySize, float xPos, float yPos);
@@ -20,8 +22,9 @@ public:
 
 	void color(int R, int G, int B);
 
-	void move(int direction);
+	void move();
 
+	void switchDir(int direction);
 	
 };
 

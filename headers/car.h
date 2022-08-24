@@ -6,10 +6,15 @@ class Car : public Cell
 {
 private:
 	int direction; // RANDOM INT BETWEEN 0 - 3
-	sf::Vector2f currentPos;
+	
 
 public:
-	Car();
+	
+	bool isActive;
 
-	void drive();
+	Car(int dir);
+
+	void move();
+
+	void checkEnd();
 };

@@ -34,26 +34,29 @@ void Cell::color(int R, int G, int B)
 }
 
 
-void Cell::move(int direction)
+void Cell::move()
 {
-	sf::Vector2f currentPos = this->shape.getPosition();
-	float moveDistance = INIT_POS;
+	this->currPos = this->shape.getPosition();
 
-	switch (direction)
+	switch (this->direction)
 	{
 	case 0: // N
-		currentPos.y -= moveDistance;
+		this->currPos.y -= INIT_POS;
 		break;
 	case 1: // E
-		currentPos.x += moveDistance;
+		this->currPos.x += INIT_POS;
 		break;
 	case 2: // S
-		currentPos.y += moveDistance;
+		this->currPos.y += INIT_POS;
 		break;
 	case 3: // W
-		currentPos.x -= moveDistance;
+		this->currPos.x -= INIT_POS;
 		break;
 	}
-	this->shape.setPosition(currentPos);
+	this->shape.setPosition(this->currPos);
 }
 
+void Cell::switchDir(int direction)
+{
+	this->direction = direction;
+}
