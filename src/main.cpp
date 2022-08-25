@@ -3,7 +3,6 @@
 
 
 
-
 int main()
 {
 	// INIT WINDOW AND VARIABLES FOR CALCULATING FPS
@@ -14,10 +13,6 @@ int main()
 	float fps;
 
 	window.setFramerateLimit(20);
-
-
-
-	
 
 	// ONE DIMENSIONAL VECTOR OF CELLS, USED TO STORE MAP "PIXELS"
 	std::vector<Cell> cellVec;
@@ -35,8 +30,11 @@ int main()
 			cellVec.push_back(cell);		// ADD TO VECTOR
 		}
 	}
-	// VECTOR TO STORE ALL CAR OBJECTS
-	std::vector<Car*> carVec;
+
+
+
+	// OBJECT TO HOLD ALL CARS
+	Cars_Container cars;
 
 
 
@@ -61,18 +59,22 @@ int main()
 			case sf::Event::KeyPressed:
 				switch (event.key.code)
 				{
-				// ADD CAR TO MAP
+					// ADD CAR TO MAP
 				case sf::Keyboard::W:	// N
-					carVec.push_back(new Car(0, 220, 30, 30));
+					cars.addCar(0);
 					break;
 				case sf::Keyboard::D:	// E
-					carVec.push_back(new Car(1, 220, 30, 30));
+					cars.addCar(1);
 					break;
 				case sf::Keyboard::S:	// S
-					carVec.push_back(new Car(2, 220, 30, 30));
+					cars.addCar(2);
 					break;
 				case sf::Keyboard::A:	// W
-					carVec.push_back(new Car(3, 220, 30, 30));
+					cars.addCar(3);
+					break;
+				case sf::Keyboard::M:	// CHANGE LIGHTS
+					cars.changeLight();
+					std::cout << "Changed Lights" << std::endl;
 					break;
 				default:
 					break;
@@ -84,30 +86,22 @@ int main()
 
 
 
-
 		// CLEAR WINDOW, UPDATE ALL LOGIC, AND FINALLY DISPLAY
 		window.clear(sf::Color(160, 160, 160));
-		
+
 		// DRAW PRE-DEFINED MAP CELLS
 		for (Cell cell : cellVec)
 		{
 			window.draw(cell.shape);
 		}
 
-		// FOR ALL ACTIVE CARS, CHECK IF IT SHOULD BE INACTIVE, AND THEN DRAW IF IT REMAINS ACTIVE
-		for (Car* car : carVec)
-		{
-			if (car->isActive)
-			{
-				//car->color(220, 30, 30);
-				car->move();
-				window.draw(car->shape);
-			}
-		}
+		// DRAW ALL CARS IN CONTAINER OBJECT
+		cars.driveCars();
+		cars.drawCars(window);
+		cars.removeCar();
 
+		// DISPLAY ALL DRAWINGS
 		window.display();
-
 	}
-
 	return 0;
 }

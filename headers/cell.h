@@ -3,7 +3,6 @@
 
 
 
-
 class Cell : sf::Drawable
 {
 private:
@@ -25,7 +24,6 @@ public:
 	void move();
 
 	void switchDir(int direction);
-	
 };
 
 

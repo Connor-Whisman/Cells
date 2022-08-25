@@ -2,7 +2,6 @@
 
 
 
-
 Cell::Cell(float xSize, float ySize, float xPos, float yPos)
 {
 	this->shape.setSize(sf::Vector2f(xSize, ySize));

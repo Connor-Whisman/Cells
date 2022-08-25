@@ -32,6 +32,3 @@ const int yINIT_SPACE = 50;
 
 
 
-
-
-
