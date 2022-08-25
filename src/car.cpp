@@ -85,7 +85,8 @@ void Cars_Container::driveCars()
 						car->currPos.y < (yINIT_SPACE + (INIT_POS * ROWS) + INIT_POS) * 0.5f			&&
 						this->nsLight == false)																			// AT NORTH LIGHT
 						break;
-
+					if (this->checkCollisions(car))
+						break;
 					car->currPos.y += INIT_POS;
 					if (car->currPos.y > yINIT_SPACE + (INIT_POS * ROWS) - INIT_POS)
 						car->isActive = false;
@@ -96,7 +97,8 @@ void Cars_Container::driveCars()
 						car->currPos.x > xINIT_SPACE + (INIT_POS * (COLS * 0.5f))						&&
 						this->ewLight == false)																			// AT EAST LIGHT
 						break;
-
+					if (this->checkCollisions(car))
+						break;
 					car->currPos.x -= INIT_POS;
 					if (car->currPos.x < xINIT_SPACE)
 						car->isActive = false;
@@ -107,7 +109,8 @@ void Cars_Container::driveCars()
 						car->currPos.y > yINIT_SPACE + (INIT_POS * (ROWS * 0.5f))						&&
 						this->nsLight == false)																			// AT SOUTH LIGHT
 						break;
-
+					if (this->checkCollisions(car))
+						break;
 					car->currPos.y -= INIT_POS;
 					if (car->currPos.y < yINIT_SPACE)
 						car->isActive = false;
@@ -118,7 +121,8 @@ void Cars_Container::driveCars()
 						car->currPos.x < (xINIT_SPACE + (INIT_POS * COLS)) * 0.5f + (INIT_POS  * 2)		&&
 						this->ewLight == false)																			// AT WEST LIGHT
 						break;
-
+					if (this->checkCollisions(car))
+						break;
 					car->currPos.x += INIT_POS;
 					if (car->currPos.x > xINIT_SPACE + (INIT_POS * COLS) - INIT_POS)
 						car->isActive = false;																		
@@ -129,6 +133,43 @@ void Cars_Container::driveCars()
 			}
 		}
 	}
+}
+
+bool Cars_Container::checkCollisions(Car* car)
+{
+	sf::FloatRect collRect;
+	collRect.top = car->shape.getGlobalBounds().top;
+	collRect.left = car->shape.getGlobalBounds().left;
+	collRect.width = car->shape.getGlobalBounds().width;
+	collRect.height = car->shape.getGlobalBounds().height;
+
+	std::vector<Car*>::iterator itr = this->allCars.begin();
+	for (itr; itr < this->allCars.end(); ++itr) {
+
+		switch (car->direction)
+		{
+		case 0:
+			collRect.height = car->shape.getGlobalBounds().height * 2;
+			//if (this->allCars[itr - allCars.begin()]->direction == 0)
+			//{
+				if (this->allCars[itr - allCars.begin()]->shape.getGlobalBounds().intersects(collRect) && car != *itr)
+				{
+					std::cout << "Collision Detected" << std::endl;
+					return true;
+				}
+			//}
+			break;
+		case 1:
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		default:
+			break;
+		}
+	}
+	return false;
 }
 
 void Cars_Container::removeCar()

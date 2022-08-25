@@ -36,8 +36,9 @@ public:
 
 	void addCar(int dir);
 	void driveCars();
-	void removeCar();
+	
 	void drawCars(sf::RenderWindow &window);
-
+	bool checkCollisions(Car* car);
+	void removeCar();
 	void changeLight();
 };
